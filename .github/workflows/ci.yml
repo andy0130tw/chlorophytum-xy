@@ -1,0 +1,20 @@
+on:
+  - push
+
+jobs:
+  install:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10
+          cache: true
+
+      - name: Install deps
+        run: pnpm i
+
+      - name: Compile
+        run: pnpm -r build
+
