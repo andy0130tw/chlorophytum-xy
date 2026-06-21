@@ -1,0 +1,26 @@
+{
+	"name": "chlorophytum-xy",
+	"version": "0.0.0",
+	"dependencies": {
+		"@chlorophytum/cli": "workspace:*",
+		"@chlorophytum/font-format-ttf": "workspace:*",
+		"@chlorophytum/hint-store-provider-file": "workspace:*",
+		"@chlorophytum/hm-combine": "workspace:*",
+		"@chlorophytum/hm-ideograph": "workspace:*",
+		"@chlorophytum/hm-select-glyphs": "workspace:*",
+		"fs-extra": "^11.3.4",
+		"ot-builder": "^1.7.9",
+		"otb-ttc-bundle": "^1.7.9",
+		"verda": "^1.13.0",
+		"which": "^6.0.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.11",
+		"@types/node": "^17.0.45",
+		"ava": "^6.4.1",
+		"typescript": "^5.5.4"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	}
+}

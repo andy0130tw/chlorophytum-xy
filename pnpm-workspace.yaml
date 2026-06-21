@@ -1,0 +1,3 @@
+packages:
+- chl-engine/packages/*
+- chl-hm-ideograph/packages/*

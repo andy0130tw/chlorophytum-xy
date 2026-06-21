@@ -1,0 +1,21 @@
+{
+	"name": "@chlorophytum/fontforge-instr",
+	"version": "0.50.0",
+	"description": "",
+	"main": "lib/index.js",
+	"typings": "lib/index.d.ts",
+	"scripts": {
+		"clean": "rimraf lib .build-cache",
+		"build": "tsc --build"
+	},
+	"author": "Renzhi Li (aka. Belleve Invis)",
+	"license": "MIT",
+	"dependencies": {
+		"@chlorophytum/arch": "workspace:*",
+		"@chlorophytum/hltt-next-backend": "workspace:*",
+		"tslib": "^2.0.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
