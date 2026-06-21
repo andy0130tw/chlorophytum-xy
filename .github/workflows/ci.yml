@@ -18,3 +18,21 @@ jobs:
       - name: Compile
         run: pnpm -r build
 
+      - name: "Let's Hint!"
+        run: |
+          node ./chl hint -c hcfg/Light.json -h cache.gz -j 4 sources/shs/SourceHanSansTW-Light.ttf hint-data.gz
+          node ./chl instruct -c hcfg/Light.json sources/shs/SourceHanSansTW-Light.ttf hint-data.gz shstw-hinted.ttf
+
+      - name: Upload hint data
+        uses: actions/upload-artifact@v7
+        with:
+          name: hint-data
+          path: |
+            cache.gz
+            hint-data.gz
+
+      - name: Upload font
+        uses: actions/upload-artifact@v7
+        with:
+          archive: false
+          path: shstw-hinted.ttf
