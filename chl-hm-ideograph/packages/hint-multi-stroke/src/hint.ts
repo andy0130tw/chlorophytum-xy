@@ -120,7 +120,7 @@ export namespace MultiStrokeHint {
 			}
 		}
 		public toJSON() {
-			return { type: TAG, props: this.props };
+			return { type: TAGH, props: this.props };
 		}
 		public createCompiler(bag: PropertyBag, sink: IFinalHintProgramSink): IHintCompiler | null {
 			const hlttSink = sink.dynamicCast(HlttProgramSink);

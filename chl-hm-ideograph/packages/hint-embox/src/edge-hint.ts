@@ -129,14 +129,14 @@ export namespace EmBoxEdge {
 			this.sink.addSegment(function* ($) {
 				if (top) {
 					yield THintTopEdge(
-						Twilights.SpurLeft(boxName),
-						Twilights.SpurLeftOrig(boxName),
+						Twilights.SpurRight(boxName),
+						Twilights.SpurRightOrig(boxName),
 						zidEdge
 					);
 				} else {
 					yield THintBottomEdge(
-						Twilights.SpurRight(boxName),
-						Twilights.SpurRightOrig(boxName),
+						Twilights.SpurLeft(boxName),
+						Twilights.SpurLeftOrig(boxName),
 						zidEdge
 					);
 				}

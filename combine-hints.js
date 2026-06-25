@@ -37,41 +37,45 @@ const readGzJSON = async (/** @type {fs.PathLike} */ p) => {
 // const upright = readJSON('hint-upright')
 // const rotated = readJSON('hint-rotated')
 
-const upright = await readGzJSON('hint-upright-full.gz')
-const rotated = await readGzJSON('hint-rotated-full.gz')
+const upright = await readGzJSON('hint-upright.gz')
+const rotated = await readGzJSON('hint-rotated.gz')
 
-// const knownLeaves = [
-//   '@chlorophytum/hint-embox::Hints::Stroke',
-//   '@chlorophytum/hint-embox::Hints::Edge',
-//   '@chlorophytum/hint-multi-stroke::MultiStrokeHint',
-//   'Chlorophytum::CommonHints::LinkChain',
-//   'Chlorophytum::CommonHints::Smooth',
-//   'Chlorophytum::CommonHints::Interpolate',
-// ]
+const knownLeaves = [
+  '@chlorophytum/hint-embox::Hints::Stroke',
+  '@chlorophytum/hint-embox::Hints::Edge',
+  '@chlorophytum/hint-multi-stroke::MultiStrokeHint',
+  'Chlorophytum::CommonHints::LinkChain',
+  'Chlorophytum::CommonHints::Smooth',
+  'Chlorophytum::CommonHints::Interpolate',
+]
 
-// function visit(node) {
-//   if (node.type === 'Chlorophytum::SequenceHint') {
-//     return node.of.forEach(visit)
-//   }
+/**
+ * @param {{ type: string; of?: any[]; inner?: any; }} node
+ */
+function visit(node) {
+  if (node.type === 'Chlorophytum::SequenceHint') {
+    return node.of.forEach(visit)
+  }
 
-//   if (node.type === 'Chlorophytum::CommonHints::WithDirection' ||
-//       node.type === '@chlorophytum/hint-embox::Hints::UseEmBox') {
-//     return visit(node.inner)
-//   }
+  if (node.type === 'Chlorophytum::CommonHints::WithDirection' ||
+      node.type === '@chlorophytum/hint-embox::Hints::UseEmBox') {
+    return visit(node.inner)
+  }
 
-//   if (!knownLeaves.includes(node.type)) {
-//     throw new Error('node.type: ' + node.type)
-//   }
-// }
+  if (!knownLeaves.includes(node.type)) {
+    throw new Error('node.type: ' + node.type)
+  }
+}
 
-// for (const [k, v] of Object.entries(upright.glyphs)) {
-//   visit(v)
-// }
+for (const root of Object.values(upright.glyphs)) {
+  visit(root)
+}
 
 const newGlyphs = {}
 
 for (const [k, v] of Object.entries(upright.glyphs)) {
   const vv = rotated.glyphs[k]
+  if (!vv) throw new Error(`Key "${k}" is missing hinting info in rotated glyphs`)
 
   assert(v.type === "Chlorophytum::SequenceHint")
   assert(v.of.length === 2)
@@ -96,10 +100,13 @@ for (const [k, v] of Object.entries(upright.glyphs)) {
     if (0) {
     } else if (x.type === '@chlorophytum/hint-embox::Hints::Stroke') {
       return [{ ...x, type: '@chlorophytum/hint-embox::Hints::StrokeH' }]
+      // return []
     } else if (x.type === '@chlorophytum/hint-embox::Hints::Edge') {
       return [{ ...x, type: '@chlorophytum/hint-embox::Hints::EdgeH' }]
+      // return []
     } else if (x.type === '@chlorophytum/hint-multi-stroke::MultiStrokeHint') {
       return [{ ...x, type: '@chlorophytum/hint-multi-stroke::MultiStrokeHintH' }]
+      // return []
     }
     return [x]
   })
