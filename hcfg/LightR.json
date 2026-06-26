@@ -47,18 +47,12 @@
 							"OutlineDicingStepLength": 0.06,
 
 							"__EmBox": {
-								"__description": "provides complete embox def for setting shared hinting opts",
+								"__description": "provides left/right as bottom/up for rotated hinting",
 
-								"StrokeBottom": -0.06,
-								"StrokeTop": 0.82,
-								"SpurBottom": -0.095,
-								"SpurTop": 0.855,
-
-								"StrokeLeft": 0.06,
-								"StrokeRight": 0.94,
-								"SpurLeft": 0.025,
-								"SpurRight": 0.975,
-
+								"StrokeBottom": 0,
+								"StrokeTop": 0.76,
+								"SpurBottom": -0.12,
+								"SpurTop": 0.88,
 								"SmallSizeExpansionRate": 1
 							}
 						}
