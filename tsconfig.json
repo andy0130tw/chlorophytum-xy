@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "es2022",
+        "target": "es2022",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "checkJs": true
+    },
+    "include": [
+        "./*.js"
+    ]
+}
