@@ -7,14 +7,16 @@ export default defineConfig({
   target: 'es2020',
   platform: 'browser',
   deps: {
+    neverBundle: true,
     // neverBundle: ['util', 'crypto', 'lodash'],
     alwaysBundle: [
       'tslib',
-      // '@chlorophytum/hint-embox',
-      // '@chlorophytum/hint-multi-stroke',
-      // '@chlorophytum/hm-ideograph',
-      // '@chlorophytum/ideograph-hint-generator-1',
-      // '@chlorophytum/ideograph-shape-analyzer-1',
+      'typable',
+      '@chlorophytum/hint-embox',
+      '@chlorophytum/hint-multi-stroke',
+      '@chlorophytum/hm-ideograph',
+      '@chlorophytum/ideograph-hint-generator-1',
+      '@chlorophytum/ideograph-shape-analyzer-1',
     ],
   },
   tsconfig: false,
@@ -24,8 +26,8 @@ export default defineConfig({
     '@chlorophytum/hm-ideograph': path.resolve('packages/hm-ideograph/src'),
     '@chlorophytum/ideograph-hint-generator-1': path.resolve('packages/ideograph-hint-generator-1/src'),
     '@chlorophytum/ideograph-shape-analyzer-1': path.resolve('packages/ideograph-shape-analyzer-1/src'),
-    // '@chlorophytum/hint-programs-stroke-adjust': path.resolve('packages/hint-programs-stroke-adjust/src'),
-    // '@chlorophytum/ideograph-shape-analyzer-shared': path.resolve('packages/ideograph-shape-analyzer-shared/src'),
+    '@chlorophytum/hint-programs-stroke-adjust': path.resolve('packages/hint-programs-stroke-adjust/src'),
+    '@chlorophytum/ideograph-shape-analyzer-shared': path.resolve('packages/ideograph-shape-analyzer-shared/src'),
   },
   plugins: [
     esmExternalRequirePlugin({
