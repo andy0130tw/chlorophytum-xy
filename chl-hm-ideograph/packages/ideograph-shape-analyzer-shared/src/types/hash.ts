@@ -1,4 +1,6 @@
-import * as crypto from "crypto";
+import { createHash } from "crypto";
+
+const crypto = { createHash }
 
 import { CGlyph } from "./glyph";
 
