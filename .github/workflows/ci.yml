@@ -1,13 +1,14 @@
 on:
-  - push
+  push:
+  workflow_dispatch:
 
 jobs:
   install:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - uses: pnpm/action-setup@v6
@@ -21,21 +22,14 @@ jobs:
       - name: Compile
         run: pnpm -r build
 
-      - name: "Let's Hint!"
+      - name: esbuild chl-hm-ideograph
         run: |
-          node ./chl hint -c hcfg/Light.json -h cache-r.gz -j 4 shstw-rotated.ttf hint-data-r.gz
-          node ./chl instruct -c hcfg/Light.json shstw-rotated.ttf hint-data-r.gz shstw-hinted-r.ttf
+          cd chl-hm-ideograph
+          pnpm exec tsdown
+          node esbuild.js
 
-      - name: Upload hint data
+      - name: Upload bundled JS
         uses: actions/upload-artifact@v7
         with:
-          name: hint-data
-          path: |
-            cache-r.gz
-            hint-data-r.gz
-
-      - name: Upload font
-        uses: actions/upload-artifact@v7
-        with:
-          archive: false
-          path: shstw-hinted-r.ttf
+          name: hm-ideograph-bundled
+          path: chl-hm-ideograph/dist
