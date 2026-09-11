@@ -2,6 +2,8 @@ import { defineConfig } from 'tsdown'
 import { esmExternalRequirePlugin } from 'rolldown/plugins'
 import path from 'node:path'
 
+// tsdown is hard to configure. we only use its dts output and bundle it with esbuild instead
+
 export default defineConfig({
   entry: 'index.ts',
   target: 'es2020',
