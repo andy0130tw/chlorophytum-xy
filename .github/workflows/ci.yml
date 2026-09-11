@@ -3,7 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  install:
+  build:
+    name: Build
     runs-on: ubuntu-24.04
 
     steps:
@@ -25,7 +26,6 @@ jobs:
       - name: esbuild chl-hm-ideograph
         run: |
           cd chl-hm-ideograph
-          ls
           pnpm exec tsdown
           node esbuild.js
 

@@ -1,3 +1,6 @@
 packages:
-- chl-engine/packages/*
-- chl-hm-ideograph/packages/*
+  - chl-engine/packages/*
+  - chl-hm-ideograph
+  - chl-hm-ideograph/packages/*
+allowBuilds:
+  esbuild: true
