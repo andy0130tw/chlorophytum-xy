@@ -44,7 +44,23 @@
 						"hintOptions": {
 							"CANONICAL_STEM_WIDTH": 0.067,
 							"DoOutlineDicing": true,
-							"OutlineDicingStepLength": 0.06
+							"OutlineDicingStepLength": 0.06,
+
+							"__EmBox": {
+								"__description": "provides complete embox def for setting shared hinting opts",
+
+								"StrokeBottom": -0.06,
+								"StrokeTop": 0.82,
+								"SpurBottom": -0.095,
+								"SpurTop": 0.855,
+
+								"StrokeLeft": 0.06,
+								"StrokeRight": 0.94,
+								"SpurLeft": 0.025,
+								"SpurRight": 0.975,
+
+								"SmallSizeExpansionRate": 1
+							}
 						}
 					}
 				}
