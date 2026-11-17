@@ -40,9 +40,9 @@ jobs:
           echo "--- UPRIGHT ---"
           node ./chl hint -c hcfg/Regular.json -h cache.gz -j 4 sources/shs/SourceHanSansTW-Regular.ttf hint-data.gz
           node ./chl instruct -c hcfg/Regular.json sources/shs/SourceHanSansTW-Regular.ttf hint-data.gz shstw-hinted.ttf
-          echo "--- ROTATED ---"
-          node ./chl hint -c hcfg/Regular.json -h cache-r.gz -j 4 shstw-rotated.ttf hint-data-r.gz
-          node ./chl instruct -c hcfg/Regular.json shstw-rotated.ttf hint-data-r.gz shstw-hinted-r.ttf
+          # echo "--- ROTATED ---"
+          # node ./chl hint -c hcfg/Regular.json -h cache-r.gz -j 4 shstw-rotated.ttf hint-data-r.gz
+          # node ./chl instruct -c hcfg/Regular.json shstw-rotated.ttf hint-data-r.gz shstw-hinted-r.ttf
 
       - name: Upload hint data
         uses: actions/upload-artifact@v7
@@ -50,9 +50,9 @@ jobs:
           name: hint-data
           path: |
             cache.gz
-            cache-r.gz
+            # cache-r.gz
             hint-data.gz
-            hint-data-r.gz
+            # hint-data-r.gz
 
       - name: Upload font
         uses: actions/upload-artifact@v7
