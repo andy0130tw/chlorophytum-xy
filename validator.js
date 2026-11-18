@@ -1,11 +1,15 @@
 import * as z from 'zod';
-const PointIDRef = z.codec(z.strictObject({
+const PointIDRef = // z.codec(
+ z.strictObject({
     kind: z.literal('PointID'),
     id: z.int(),
-}), z.int(), {
-    decode: obj => obj.id,
-    encode: id => ({ kind: 'PointID', id }),
 });
+/*  z.int(),
+  {
+    decode: obj => obj.id,
+    encode: id => ({ kind: 'PointID' as const, id }),
+  }
+)*/
 const Direction = z.enum({ X: 1, Y: 2 });
 const EmBoxName = z.literal(['Ideograph', 'Hiragana', 'Katakana']);
 const SequenceHintT = (t) => z.strictObject({
@@ -101,7 +105,6 @@ export const CommonGlyphHintH = z.discriminatedUnion('type', [
     IdeoStrokeHintH,
     IdeoMultiStrokeHintH,
 ]);
-/** @template {} T */
 const HintDescInnerT = (t) => SequenceHintT(z.tuple([
     UseEmBoxT(SequenceHintT(z.array(t)))
 ]));
