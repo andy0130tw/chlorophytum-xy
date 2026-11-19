@@ -37,13 +37,16 @@ const IP2 = Template((Tb: THandle, Tt: THandle) =>
 			y1c = $.Local(Frac),
 			y2c = $.Local(Frac),
 			yMc = $.Local(Frac);
+
+		// XXX: this might be a bug in the upstream -- fixed by guessing
+        yield y1o.set(gc.orig(zA));
+		yield y2o.set(gc.orig(zB));
+		yield y1c.set(gc.cur(zA));
+		yield y2c.set(gc.cur(zB));
+
 		yield If(and(lt(abs(sub(y1o, y2o)), 1), lt(abs(sub(y1c, y2c)), abs(sub(y1o, y2o))))).Then(
 			function* () {
-				yield y1c.set(gc.cur(zA));
-				yield y2c.set(gc.cur(zB));
 				yield yMc.set(div(add(y1c, y2c), 2));
-				yield y1o.set(gc.orig(zA));
-				yield y2o.set(gc.orig(zB));
 				yield yMo.set(div(add(y1o, y2o), 2));
 				yield Scfs(
 					zA,
